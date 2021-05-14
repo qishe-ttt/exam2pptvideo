@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+/*.pptx
+*.tsv
+exam
+*.zip
+*_imgs
+apidocs

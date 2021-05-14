@@ -1,0 +1,45 @@
+exam2pptvideo package
+=====================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   exam2pptvideo.es
+
+Submodules
+----------
+
+exam2pptvideo.exam\_ppt module
+------------------------------
+
+.. automodule:: exam2pptvideo.exam_ppt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+exam2pptvideo.exam\_video module
+--------------------------------
+
+.. automodule:: exam2pptvideo.exam_video
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+exam2pptvideo.lib module
+------------------------
+
+.. automodule:: exam2pptvideo.lib
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: exam2pptvideo
+   :members:
+   :undoc-members:
+   :show-inheritance:

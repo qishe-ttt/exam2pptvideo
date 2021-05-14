@@ -1,0 +1,21 @@
+exam2pptvideo.es package
+========================
+
+Submodules
+----------
+
+exam2pptvideo.es.choices\_exam module
+-------------------------------------
+
+.. automodule:: exam2pptvideo.es.choices_exam
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: exam2pptvideo.es
+   :members:
+   :undoc-members:
+   :show-inheritance:
