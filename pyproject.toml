@@ -1,8 +1,13 @@
 [tool.poetry]
 name = "exam2pptvideo"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Video generator for language exam"
+authors = ["Phoenix Grey <phoenix.grey0108@gmail.com>"]
+repository = "https://github.com/qishe-ttt/exam2pptvideo"
+readme = "README.md"
+documentation = "https://qishe-ttt.github.io/exam2pptvideo/"
+keywords = ["ppt", "language", "video", "exam"] 
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
