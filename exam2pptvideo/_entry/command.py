@@ -1,6 +1,5 @@
 import click
 import json
-import os
 from exam2pptvideo import SpanishExamPPT, SpanishExamVideo
 from exam2pptvideo.lib import pptx2pdf, pdf2images
  
