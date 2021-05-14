@@ -17,7 +17,7 @@ exam_pptx_validate --pptx [pptx file]
 
 * Convert exam csv file into ppt file
 ```
-exam_csv2pptx--sourcecsv [vocab csv file] --lang [language] --title [title shown in ppt] --destpptx [pptx file]
+exam_csv2pptx--sourcecsv [exam csv file] --lang [language] --title [title shown in ppt] --destpptx [pptx file]
 ```
 
 * Convert ppt into pdf and images
