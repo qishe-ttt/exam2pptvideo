@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "exam2pptvideo"
-version = "0.1.0"
+version = "0.1.1"
 description = "Video generator for language exam"
 authors = ["Phoenix Grey <phoenix.grey0108@gmail.com>"]
 repository = "https://github.com/qishe-ttt/exam2pptvideo"
