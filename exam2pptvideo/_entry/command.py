@@ -1,8 +1,10 @@
 import click
 import json
+
+from exam2pptvideo import EnglishVocabPhrasePPT, EnglishSentencePPT, EnglishExamVideo
 from exam2pptvideo import SpanishSentencePPT, SpanishExamVideo
-from exam2pptvideo import EnglishSentencePPT, EnglishExamVideo
 from exam2pptvideo import GermanSentencePPT, GermanExamVideo
+
 from exam2pptvideo.lib import pptx2pdf, pdf2images
  
 def _print_version(ctx, param, value):
@@ -15,15 +17,19 @@ def _print_version(ctx, param, value):
 @click.option("--sourcecsv", prompt="source csv file path", help="Specify the source csv file path")
 @click.option("--title", prompt="title of the pptx", help="Specify the title of the pptx")
 @click.option("--lang", prompt="language", help="Specify the language")
+@click.option("--genre", prompt="genre", default="sentence", help="Specify the genre, sentence or vocabphrase")
 @click.option("--destpptx", default="test.pptx", prompt="destination pptx file", help="Specify the destination pptx file name")
-def csv2pptx(sourcecsv, title, lang, destpptx):
+def csv2pptx(sourcecsv, title, lang, genre, destpptx):
   _PPTS = {
-    "es": SpanishSentencePPT,
-    "en": EnglishSentencePPT,
-    "de": GermanSentencePPT,
+    "en_sentence": EnglishSentencePPT,
+    "es_sentence": SpanishSentencePPT,
+    "de_sentence": GermanSentencePPT,
+    "en_vocabphrase": EnglishVocabPhrasePPT,
+    #"es_vocabphrase": SpanishVocabPhrasePPT,
+    #"de_vocabphrase": GermanVocabPhrasePPT,
   }
 
-  _PPT = _PPTS[lang]
+  _PPT = _PPTS[lang+"_"+genre]
 
   phase = {"step": 1, "msg": "Start ppt generation"}
   print(json.dumps(phase))

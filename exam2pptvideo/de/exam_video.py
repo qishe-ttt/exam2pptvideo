@@ -1,34 +1,8 @@
-from exam2pptvideo.sentence_ppt import SentencePPT
 from exam2pptvideo.exam_video import ExamVideo
 import os
-import json
 
-class EnglishSentencePPT(SentencePPT):
-  """Create Exam PPT for English study
-
-  Attributes:
-    content (list of dict): read from csv file
-  """
-
-  _template_dir = os.path.dirname(__file__)
-  _templates = {
-    "classic": os.path.join(_template_dir, 'templates/exam_english_classic.pptx'),
-  }
-  lang = 'en'
-
-  content_keys = ["Question", "A", "B", "C", "D", "Correct", "Level", "Checkpoint", "Explanation"]
-
-  _score_code = {
-    "100": ["Perfect", "非常棒"],
-    "60-90": ["Very good", "优秀如你"],
-    "0-50": ["Just so so", "凑合"]
-  }
-
-  def __init__(self, sourcefile, title="", genre="classic"):
-    super().__init__(sourcefile, title, genre)
-
-class EnglishExamVideo(ExamVideo):
-  """Create Exam Video for English study
+class GermanExamVideo(ExamVideo):
+  """Create Exam Video for German study
 
   Attributes:
     slides (list of Slide): read from pptx file
@@ -43,12 +17,12 @@ class EnglishExamVideo(ExamVideo):
     "Correct": "correct.m4a",
     "Wrong": "wrong.m4a",
     "Calculation": "calculate.m4a",
-    "100": "Perfect.m4a",
-    "60-90": "Very_good.m4a",
-    "0-50": "Just_so_so.m4a"
+    "100": "Perfekt.m4a",
+    "60-90": "Sehr_gut.m4a",
+    "0-50": "So_lala.m4a"
   }
 
-  lang = 'en'
+  lang = 'de'
 
   def __init__(self, sourceppt):
     super().__init__(sourceppt)
