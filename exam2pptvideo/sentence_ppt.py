@@ -1,15 +1,15 @@
 from pptx import Presentation
-from exam2pptvideo.lib import readCSV
+from exam2pptvideo.lib import readCSV, re_substitute
 import json
 import re
 
-class ExamPPT:
+class SentencePPT:
   """It is designed as an abstract class to be inheritated for exam ppt generation of different languages,
 
   Note:
-    **DON'T** use this class directly. To define a ExamPPT for a lanugage
+    **DON'T** use this class directly. To define a SentencePPT for a lanugage
 
-      1. Define subclass inheriting ``ExamPPT``, e.g, ``ChineseExamPPT`` 
+      1. Define subclass inheriting ``SentencePPT``, e.g, ``ChineseSentencePPT`` 
       2. Define class variable ``_templates``, which is a :obj:`dict`, key is template genre, value is template path
       3. Define class variable ``content_keys``, which is a :obj:`list`, containing the heads in csv file
   """
@@ -23,7 +23,7 @@ class ExamPPT:
       genre (str): ppt template style 
     """
 
-    if self.__class__.__name__ != "ExamPPT":
+    if self.__class__.__name__ != "SentencePPT":
       self._assert_class_variables()
       self._template = self.__class__._templates[genre]
       self._prs = Presentation(self._template)
@@ -37,6 +37,8 @@ class ExamPPT:
     cls = self.__class__
     assert cls._templates != None
     assert isinstance(cls._templates, dict)
+    assert cls._score_code != None
+    assert isinstance(cls._score_code, dict)
     assert cls.content_keys != None
     assert isinstance(cls.content_keys, list)
 
@@ -125,10 +127,10 @@ class ExamPPT:
 
     seq.text_frame.text = "Q." + str(i)
     correct.text_frame.text = line["Correct"]
-    segments = re.split(r'_+', line["Question"])
-    question.text_frame.text = segments[0] + "[" + line[line["Correct"]] + "]" + segments[1]
+    
+    replaced_question = re_substitute('_+', line["Question"], line[line["Correct"]])
 
-    #question.text_frame.text = line["Question"]
+    question.text_frame.text = replaced_question
 
     level, checkpoint, explanation = holders[13], holders[14], holders[15]
     level.text_frame.text = line["Level"]
@@ -145,10 +147,10 @@ class ExamPPT:
 
     seq.text_frame.text = "Q." + str(i)
     correct.text_frame.text = line["Correct"]
-    segments = re.split(r'_+', line["Question"])
-    question.text_frame.text = segments[0] + "[" + line[line["Correct"]] + "]" + segments[1]
 
-    #question.text_frame.text = line["Question"]
+    replaced_question = re_substitute('_+', line["Question"], line[line["Correct"]])
+
+    question.text_frame.text = replaced_question
 
     A, B, C, D = holders[13], holders[14], holders[15], holders[16] 
     A.text_frame.text = line["A"]

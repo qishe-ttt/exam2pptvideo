@@ -1,7 +1,8 @@
 import click
 import json
-from exam2pptvideo import SpanishExamPPT, SpanishExamVideo
-from exam2pptvideo import EnglishExamPPT, EnglishExamVideo
+from exam2pptvideo import SpanishSentencePPT, SpanishExamVideo
+from exam2pptvideo import EnglishSentencePPT, EnglishExamVideo
+from exam2pptvideo import GermanSentencePPT, GermanExamVideo
 from exam2pptvideo.lib import pptx2pdf, pdf2images
  
 def _print_version(ctx, param, value):
@@ -17,8 +18,9 @@ def _print_version(ctx, param, value):
 @click.option("--destpptx", default="test.pptx", prompt="destination pptx file", help="Specify the destination pptx file name")
 def csv2pptx(sourcecsv, title, lang, destpptx):
   _PPTS = {
-    "es": SpanishExamPPT,
-    "en": EnglishExamPPT,
+    "es": SpanishSentencePPT,
+    "en": EnglishSentencePPT,
+    "de": GermanSentencePPT,
   }
 
   _PPT = _PPTS[lang]
@@ -41,6 +43,7 @@ def pptx2video(sourcepptx, lang, destdir):
   _VIDEOS = {
     "es": SpanishExamVideo,
     "en": EnglishExamVideo,
+    "de": GermanExamVideo,
   }
 
   _VIDEO = _VIDEOS[lang]

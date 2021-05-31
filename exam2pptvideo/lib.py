@@ -3,6 +3,7 @@ from subprocess import call, DEVNULL
 import os
 import csv
 import sys
+import re
 
 def readCSV(filename):
   """Read csv file
@@ -56,4 +57,12 @@ def pdf2images(pdfpath, imgfolder='./', start=0, end=None):
     image.save(os.path.join(imgfolder, str(index)+".jpg"))
   return len(images[start:end])
 
+def re_substitute(pattern, content, substitutes):
+  segments = re.split("("+pattern+")", content)
 
+  ide = [i for i, item in enumerate(segments) if re.search(pattern, item)]
+  subs = [s.strip() for s in substitutes.split(",")]
+  assert(len(ide) == len(subs))
+  for i, c in zip(ide, subs):
+    segments[i] = "[ " + c + " ]"
+  return "".join(segments)
