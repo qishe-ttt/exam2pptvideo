@@ -1,8 +1,12 @@
 *.pyc
 __pycache__
 /*.pptx
-*.tsv
+/*.tsv
+tsv_sample
 exam
 *.zip
 *_imgs
 apidocs
+.DS_Store
+*/.DS_Store
+/*_exam

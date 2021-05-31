@@ -47,6 +47,7 @@ class ExamPPT:
     content = readCSV(self._sourcefile) 
     for e in content:
       keys = e.keys()
+      print(keys)
       assert(len(keys) == len(self.__class__.content_keys))
       for k in keys:
         assert(k in self.__class__.content_keys)
@@ -74,17 +75,14 @@ class ExamPPT:
     slide.name = score
     holders = slide.shapes.placeholders
  
-    _code = {
-      "100": ["Perfecto", "非常棒"],
-      "60-90": ["Muy bien", "优秀如你"],
-      "0-50": ["Asi Asi", "凑合"]
-    }
+    _code = self.__class__._score_code
 
     title, title_cn = holders[10], holders[11]
     title.text_frame.text = _code[score][0] 
     title_cn.text_frame.text = _code[score][1]
 
     holders[12].text_frame.text = score
+
 
 
   def _create_question(self, i, line):
