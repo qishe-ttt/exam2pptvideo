@@ -87,29 +87,26 @@ class VocabPhrasePPT:
 
 
   def _create_question(self, i, line):
-    # TODO: change template name
-    layout = self._prs.slide_layouts.get_by_name("Question")
+    layout = self._prs.slide_layouts.get_by_name("VocabPhrase")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "Q" + str(i)
     holders = slide.shapes.placeholders
 
     seq, question, level_checkpoint = holders[10], holders[11], holders[12]
     seq.text_frame.text = "Q." + str(i)
-    question.text_frame.text = line["Question"] + "\n" + "__________"
+    question.text_frame.text = line["Question"]
 
     level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
  
   def _create_question_with_choices(self, i, line):
-    # TODO: change template name
-
-    layout = self._prs.slide_layouts.get_by_name("Question with choices")
+    layout = self._prs.slide_layouts.get_by_name("VocabPhrase with choices")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "QWC" + str(i)
     holders = slide.shapes.placeholders
 
     seq, question = holders[10], holders[11]
     seq.text_frame.text = "Q." + str(i)
-    question.text_frame.text = line["Question"] + "\n" + "__________"
+    question.text_frame.text = line["Question"]
 
     A, B, C, D = holders[12], holders[13], holders[14], holders[15]
     A.text_frame.text = line["A"]
@@ -121,9 +118,7 @@ class VocabPhrasePPT:
     level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
  
   def _create_answer(self, i, line):
-    # TODO: change template name
-
-    layout = self._prs.slide_layouts.get_by_name("Analysis")
+    layout = self._prs.slide_layouts.get_by_name("VocabPhrase analysis")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "A" + str(i)
     holders = slide.shapes.placeholders
@@ -141,9 +136,8 @@ class VocabPhrasePPT:
     explanation.text_frame.text = line["Explanation"]
 
   def _create_answer_with_choices(self, i, line):
-    # TODO: change template name
 
-    layout = self._prs.slide_layouts.get_by_name("Analysis with choices")
+    layout = self._prs.slide_layouts.get_by_name("VocabPhrase analysis with choices")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "AWC" + str(i)
     holders = slide.shapes.placeholders

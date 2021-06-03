@@ -10,16 +10,20 @@ class EnglishExamVideo(ExamVideo):
 
   _soundindex = {
     "Cover": "cover.m4a",
-    "Question": "question.m4a",
-    "Question with choices": "question.m4a",
-    "Analysis": "analysis.m4a",
-    "Analysis with choices": "analysis.m4a",
+    "Sentence": "question.m4a",
+    "Sentence with choices": "question.m4a",
+    "Sentence analysis": "analysis.m4a",
+    "Sentence analysis with choices": "analysis.m4a",
+    "VocabPhrase": "question.m4a",
+    "VocabPhrase with choices": "question.m4a",
+    "VocabPhrase analysis": "analysis.m4a",
+    "VocabPhrase analysis with choices": "analysis.m4a",
     "Correct": "correct.m4a",
     "Wrong": "wrong.m4a",
     "Calculation": "calculate.m4a",
-    "100": "Perfect.m4a",
-    "60-90": "Very_good.m4a",
-    "0-50": "Just_so_so.m4a"
+    "100": "100.m4a",
+    "60-90": "60-90.m4a",
+    "0-50": "0-50.m4a"
   }
 
   lang = 'en'

@@ -88,7 +88,7 @@ class SentencePPT:
 
 
   def _create_question(self, i, line):
-    layout = self._prs.slide_layouts.get_by_name("Question")
+    layout = self._prs.slide_layouts.get_by_name("Sentence")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "Q" + str(i)
     holders = slide.shapes.placeholders
@@ -99,7 +99,7 @@ class SentencePPT:
     level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
  
   def _create_question_with_choices(self, i, line):
-    layout = self._prs.slide_layouts.get_by_name("Question with choices")
+    layout = self._prs.slide_layouts.get_by_name("Sentence with choices")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "QWC" + str(i)
     holders = slide.shapes.placeholders
@@ -118,7 +118,7 @@ class SentencePPT:
     level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
  
   def _create_answer(self, i, line):
-    layout = self._prs.slide_layouts.get_by_name("Analysis")
+    layout = self._prs.slide_layouts.get_by_name("Sentence analysis")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "A" + str(i)
     holders = slide.shapes.placeholders
@@ -138,7 +138,7 @@ class SentencePPT:
     explanation.text_frame.text = line["Explanation"]
 
   def _create_answer_with_choices(self, i, line):
-    layout = self._prs.slide_layouts.get_by_name("Analysis with choices")
+    layout = self._prs.slide_layouts.get_by_name("Sentence analysis with choices")
     slide = self._prs.slides.add_slide(layout)
     slide.name = "AWC" + str(i)
     holders = slide.shapes.placeholders
