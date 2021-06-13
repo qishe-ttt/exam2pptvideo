@@ -6,8 +6,8 @@ from .es.sentence_ppt import SpanishSentencePPT
 from .de.sentence_ppt import GermanSentencePPT
 
 from .en.vocab_phrase_ppt import EnglishVocabPhrasePPT
-#from .es.vocab_phrase_ppt import SpanishVocabPhrasePPT
-#from .de.vocab_phrase_ppt import GermanVocabPhrasePPT
+from .es.vocab_phrase_ppt import SpanishVocabPhrasePPT
+from .de.vocab_phrase_ppt import GermanVocabPhrasePPT
 
 
 from .en.exam_video import EnglishExamVideo

@@ -39,6 +39,8 @@ class SentencePPT:
     assert isinstance(cls._templates, dict)
     assert cls._score_code != None
     assert isinstance(cls._score_code, dict)
+    assert cls._cal_slogan != None
+    assert isinstance(cls._cal_slogan, str)
     assert cls.content_keys != None
     assert isinstance(cls.content_keys, list)
 
@@ -49,12 +51,10 @@ class SentencePPT:
     content = readCSV(self._sourcefile) 
     for e in content:
       keys = e.keys()
-      print(keys)
       assert(len(keys) == len(self.__class__.content_keys))
       for k in keys:
         assert(k in self.__class__.content_keys)
     self.content = content
-    print(content)
 
   def _create_opening(self):
     """Create home slide
@@ -125,7 +125,7 @@ class SentencePPT:
 
     seq, correct, question = holders[10], holders[11], holders[12]
 
-    seq.text_frame.text = "Q." + str(i)
+    seq.text_frame.text = "A." + str(i)
     correct.text_frame.text = line["Correct"]
     
     replaced_question = re_substitute('_+', line["Question"], line[line["Correct"]])
@@ -145,7 +145,7 @@ class SentencePPT:
 
     seq, correct, question = holders[10], holders[11], holders[12]
 
-    seq.text_frame.text = "Q." + str(i)
+    seq.text_frame.text = "A." + str(i)
     correct.text_frame.text = line["Correct"]
 
     replaced_question = re_substitute('_+', line["Question"], line[line["Correct"]])
@@ -166,6 +166,14 @@ class SentencePPT:
   def _create_calculation(self):
     layout = self._prs.slide_layouts.get_by_name("Calculation")
     slide = self._prs.slides.add_slide(layout)
+    holders = slide.shapes.placeholders
+    
+    cal = holders[10]
+    _cal_slogan = self.__class__._cal_slogan
+
+    cal.text_frame.text = _cal_slogan 
+
+
     slide.name = "Calculation"
 
   def _create_wrong(self):

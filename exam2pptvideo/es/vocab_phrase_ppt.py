@@ -1,7 +1,7 @@
-from exam2pptvideo.sentence_ppt import SentencePPT
+from exam2pptvideo.vocab_phrase_ppt import VocabPhrasePPT
 import os
 
-class SpanishSentencePPT(SentencePPT):
+class SpanishVocabPhrasePPT(VocabPhrasePPT):
   """Create Exam PPT for Spanish study
 
   Attributes:
@@ -14,6 +14,8 @@ class SpanishSentencePPT(SentencePPT):
   }
   lang = 'es'
 
+  content_keys = ["Question", "A", "B", "C", "D", "Correct", "Level", "Checkpoint", "Explanation_A", "Explanation_B", "Explanation_C", "Explanation_D"]
+
   _score_code = {
     "100": ["PERFECTO", "全对了，很棒哦！去下一个等级挑战试试吧"],
     "60-90": ["MUY BIEN", "还不错哦，八啾觉得\"多浸泡在语言环境中可以潜移默化的提高语言能\"" ],
@@ -21,8 +23,6 @@ class SpanishSentencePPT(SentencePPT):
   }
 
   _cal_slogan = "Se está calculando tu puntuación."
-
-  content_keys = ["Question", "A", "B", "C", "D", "Correct", "Level", "Checkpoint", "Explanation"]
 
   def __init__(self, sourcefile, title="", genre="classic"):
     super().__init__(sourcefile, title, genre)

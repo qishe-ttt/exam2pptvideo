@@ -39,6 +39,8 @@ class VocabPhrasePPT:
     assert isinstance(cls._templates, dict)
     assert cls._score_code != None
     assert isinstance(cls._score_code, dict)
+    assert cls._cal_slogan != None
+    assert isinstance(cls._cal_slogan, str)
     assert cls.content_keys != None
     assert isinstance(cls.content_keys, list)
 
@@ -49,12 +51,10 @@ class VocabPhrasePPT:
     content = readCSV(self._sourcefile) 
     for e in content:
       keys = e.keys()
-      print(keys)
       assert(len(keys) == len(self.__class__.content_keys))
       for k in keys:
         assert(k in self.__class__.content_keys)
     self.content = content
-    print(content)
 
   def _create_opening(self):
     """Create home slide
@@ -108,15 +108,17 @@ class VocabPhrasePPT:
     seq.text_frame.text = "Q." + str(i)
     question.text_frame.text = line["Question"]
 
-    A, B, C, D = holders[12], holders[13], holders[14], holders[15]
+    level_checkpoint = holders[12]
+    level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
+ 
+    A, B, C, D = holders[13], holders[14], holders[15], holders[16]
+
     A.text_frame.text = line["A"]
     B.text_frame.text = line["B"]
     C.text_frame.text = line["C"]
     D.text_frame.text = line["D"]
 
-    level_checkpoint = holders[16]
-    level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
- 
+
   def _create_answer(self, i, line):
     layout = self._prs.slide_layouts.get_by_name("VocabPhrase analysis")
     slide = self._prs.slides.add_slide(layout)
@@ -125,15 +127,19 @@ class VocabPhrasePPT:
 
     seq, correct, question = holders[10], holders[11], holders[12]
 
-    seq.text_frame.text = "Q." + str(i)
+    seq.text_frame.text = "A." + str(i)
     correct.text_frame.text = line["Correct"]
     
-    question.text_frame.text = line["Question"] + "\n" + line[line["Correct"]]
+    question.text_frame.text = line["Question"] + "  " + line[line["Correct"]]
 
-    level, checkpoint, explanation = holders[13], holders[14], holders[15]
-    level.text_frame.text = line["Level"]
-    checkpoint.text_frame.text = line["Checkpoint"]
-    explanation.text_frame.text = line["Explanation"]
+    level_checkpoint = holders[13]
+    level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
+
+    A, B, C, D = holders[14], holders[15], holders[16], holders[17]
+    A.text_frame.text = line["A"] + " " + line["Explanation_A"].strip()
+    B.text_frame.text = line["B"] + " " + line["Explanation_B"].strip()
+    C.text_frame.text = line["C"] + " " + line["Explanation_C"].strip()
+    D.text_frame.text = line["D"] + " " + line["Explanation_D"].strip()
 
   def _create_answer_with_choices(self, i, line):
 
@@ -144,25 +150,30 @@ class VocabPhrasePPT:
 
     seq, correct, question = holders[10], holders[11], holders[12]
 
-    seq.text_frame.text = "Q." + str(i)
+    seq.text_frame.text = "A." + str(i)
     correct.text_frame.text = line["Correct"]
 
-    question.text_frame.text = line["Question"] + "\n" + line[line["Correct"]]
+    question.text_frame.text = line["Question"] + "  " + line[line["Correct"]]
 
-    A, B, C, D = holders[13], holders[14], holders[15], holders[16] 
-    A.text_frame.text = line["A"]
-    B.text_frame.text = line["B"]
-    C.text_frame.text = line["C"]
-    D.text_frame.text = line["D"]
+    level_checkpoint = holders[13]
+    level_checkpoint.text_frame.text = line["Level"] + "-" + line["Checkpoint"]
 
-    level, checkpoint, explanation = holders[17], holders[18], holders[19]
-    level.text_frame.text = line["Level"]
-    checkpoint.text_frame.text = line["Checkpoint"]
-    explanation.text_frame.text = line["Explanation"]
+    A, B, C, D = holders[14], holders[15], holders[16], holders[17]
+    A.text_frame.text = line["A"] + " " + line["Explanation_A"].strip()
+    B.text_frame.text = line["B"] + " " + line["Explanation_B"].strip()
+    C.text_frame.text = line["C"] + " " + line["Explanation_C"].strip()
+    D.text_frame.text = line["D"] + " " + line["Explanation_D"].strip()
 
   def _create_calculation(self):
     layout = self._prs.slide_layouts.get_by_name("Calculation")
     slide = self._prs.slides.add_slide(layout)
+    holders = slide.shapes.placeholders
+    
+    cal = holders[10]
+    _cal_slogan = self.__class__._cal_slogan
+
+    cal.text_frame.text = _cal_slogan 
+
     slide.name = "Calculation"
 
   def _create_wrong(self):

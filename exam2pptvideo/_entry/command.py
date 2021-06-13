@@ -2,8 +2,8 @@ import click
 import json
 
 from exam2pptvideo import EnglishVocabPhrasePPT, EnglishSentencePPT, EnglishExamVideo
-from exam2pptvideo import SpanishSentencePPT, SpanishExamVideo
-from exam2pptvideo import GermanSentencePPT, GermanExamVideo
+from exam2pptvideo import SpanishVocabPhrasePPT, SpanishSentencePPT, SpanishExamVideo
+from exam2pptvideo import GermanVocabPhrasePPT, GermanSentencePPT, GermanExamVideo
 
 from exam2pptvideo.lib import pptx2pdf, pdf2images
  
@@ -25,8 +25,8 @@ def csv2pptx(sourcecsv, title, lang, genre, destpptx):
     "es_sentence": SpanishSentencePPT,
     "de_sentence": GermanSentencePPT,
     "en_vocabphrase": EnglishVocabPhrasePPT,
-    #"es_vocabphrase": SpanishVocabPhrasePPT,
-    #"de_vocabphrase": GermanVocabPhrasePPT,
+    "es_vocabphrase": SpanishVocabPhrasePPT,
+    "de_vocabphrase": GermanVocabPhrasePPT,
   }
 
   _PPT = _PPTS[lang+"_"+genre]
