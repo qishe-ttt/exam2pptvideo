@@ -61,7 +61,10 @@ def re_substitute(pattern, content, substitutes):
   segments = re.split("("+pattern+")", content)
 
   ide = [i for i, item in enumerate(segments) if re.search(pattern, item)]
-  subs = [s.strip() for s in substitutes.split(",")]
+  delimited = ","
+  if "..." in substitutes:
+    delimited = "..."
+  subs = [s.strip() for s in substitutes.split(delimited)]
   assert(len(ide) == len(subs))
   for i, c in zip(ide, subs):
     segments[i] = "[ " + c + " ]"
